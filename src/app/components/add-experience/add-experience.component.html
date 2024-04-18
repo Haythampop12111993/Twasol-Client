@@ -1,0 +1,141 @@
+<div class="main" style="text-align: center; width: 700px; padding: 15px">
+  <p class="form-title">Add Experience</p>
+  <small>* = required field</small>
+  <form [formGroup]="experienceFrom" class="form1" (submit)="addExperience()">
+    <div>
+      <input
+        style="margin-left: 0"
+        type="text"
+        name="title"
+        placeholder="* Jop Title"
+        formControlName="title"
+      />
+    </div>
+    @if( experienceControls?.title?.['errors']?.['required']&& isSubmitted){
+    <div>
+      <div
+        class="d-flex justify-content-center align-items-center error-message"
+      >
+        <h4 class="alert alert-danger">Title is required</h4>
+      </div>
+    </div>
+    }
+
+    <div>
+      <input
+        style="margin-left: 0"
+        type="text"
+        name="company"
+        placeholder="* Company"
+        formControlName="company"
+      />
+    </div>
+    @if(experienceControls?.company?.['errors']?.['required']&& isSubmitted){
+    <div>
+      <div
+        class="d-flex justify-content-center align-items-center error-message"
+      >
+        <h4 class="alert alert-danger">Company is required</h4>
+      </div>
+    </div>
+    }
+    <div>
+      <input
+        style="margin-left: 0"
+        type="text"
+        name="location"
+        placeholder="* Location"
+        formControlName="location"
+      />
+    </div>
+    @if(experienceControls?.location?.['errors']?.['required']&& isSubmitted){
+    <div>
+      <div
+        class="d-flex justify-content-center align-items-center error-message"
+      >
+        <h4 class="alert alert-danger">location is required</h4>
+      </div>
+    </div>
+    }
+    <div>
+      <textarea
+        style="margin-left: 0"
+        name="description"
+        placeholder="* Description"
+        formControlName="description"
+      ></textarea>
+    </div>
+    @if(experienceControls?.description?.['errors']?.['required'] &&
+    isSubmitted){
+    <div style="margin-top: -8px">
+      <div
+        class="d-flex justify-content-center align-items-center error-message"
+      >
+        <h4 class="alert alert-danger">Description is required</h4>
+      </div>
+    </div>
+    }
+    <div>
+      <h3 style="text-align: left; margin-left: 85px; margin-bottom: 5px">
+        From Date
+      </h3>
+      <input
+        style="margin-left: 0"
+        type="date"
+        name="from"
+        formControlName="from"
+      />
+    </div>
+    @if(experienceControls?.from?.['errors']?.['required']&& isSubmitted){
+    <div>
+      <div
+        class="d-flex justify-content-center align-items-center error-message"
+      >
+        <h4 class="alert alert-danger">From Date is required</h4>
+      </div>
+    </div>
+    }
+    <div
+      style="
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 10px;
+        margin: 20px 0 20px 85px;
+      "
+    >
+      <input type="checkbox" name="current" formControlName="current" />
+      <h4>Current ( Until now )</h4>
+    </div>
+    <div [hidden]="experienceFrom.get('current')?.value">
+      <h3 style="text-align: left; margin-left: 85px; margin-bottom: 5px">
+        To Date
+      </h3>
+      <input
+        [readOnly]="experienceFrom.get('current')?.value"
+        style="margin-left: 0"
+        type="date"
+        name="to"
+        formControlName="to"
+      />
+    </div>
+    @if(!experienceFrom.get('to')?.value &&
+    !experienceFrom.get('current')?.value && isSubmitted){
+    <div style="display: flex; justify-content: center">
+      <div
+        style="display: flex; justify-content: center"
+        class="alert alert-danger"
+      >
+        <h3>To Date is required</h3>
+      </div>
+    </div>
+    }
+
+    <div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button routerLink="/main/profile" type="button" class="btn btn-light">
+        Go Back
+      </button>
+    </div>
+  </form>
+</div>

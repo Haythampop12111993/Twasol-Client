@@ -1,0 +1,17 @@
+<div class="post-card">
+  <div class="row">
+    <div class="column">
+      <img class="profile" [src]="comment.image" alt="profile Img" />
+      <h4>{{ comment?.name }}</h4>
+    </div>
+    <div style="width: 75%; text-align: left; margin-top: 10px" class="column">
+      <h4>{{ comment.text }}</h4>
+      <small style="color: gray"> Posted at: {{ comment.date | date }}</small>
+    </div>
+    @if(comment.user == userId) {
+    <button (click)="deleteComment(comment._id)" class="btn btn-light">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
+    }
+  </div>
+</div>

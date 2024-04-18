@@ -1,0 +1,28 @@
+@if(!isUpLoading){
+<h2 mat-dialog-title>Hi {{ data.name }}</h2>
+<form (submit)="onSubmitClick()">
+  <mat-dialog-content
+    style="display: flex; flex-direction: column; align-items: center"
+  >
+    <p>Please UpLoad your Profile Image</p>
+    <!-- <mat-label>Favorite Animal</mat-label> -->
+    <input type="file" (change)="onFileChange($event)" />
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button type="button" mat-button (click)="onNoClick()">No Thanks</button>
+    <button type="submit" mat-button>Upload</button>
+  </mat-dialog-actions>
+</form>
+}@else {
+<h2 mat-dialog-title>Hi {{ data.name }}</h2>
+<mat-dialog-content
+  style="display: flex; flex-direction: column; align-items: center"
+>
+  <p>Please wait your Profile Image is Uploading</p>
+  <mat-spinner></mat-spinner>
+
+  <!-- <mat-label>Favorite Animal</mat-label> -->
+</mat-dialog-content>
+<mat-dialog-actions> </mat-dialog-actions>
+
+}

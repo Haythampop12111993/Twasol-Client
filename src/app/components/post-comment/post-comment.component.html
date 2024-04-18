@@ -1,0 +1,31 @@
+<div class="post-card">
+  <p
+    style="
+      border-bottom: 2px solid rgb(151, 145, 145);
+      padding-bottom: 0.5rem;
+      margin-bottom: 20px;
+    "
+    class="form-title center"
+  >
+    <b> Leave a Comment </b>
+  </p>
+  <form #fromComment="ngForm" (ngSubmit)="onSubmit(fromComment)">
+    <div class="form-group">
+      <textarea
+        placeholder="What's on your mind?"
+        name="text"
+        [(ngModel)]="comment"
+        required
+        #commentText="ngModel"
+      ></textarea>
+    </div>
+    @if (commentText.errors?.["required"] && fromComment.submitted) {
+    <div>
+      <p class="alert alert-danger center">Comment is Required</p>
+    </div>
+    }
+    <div class="form-group">
+      <button class="btn btn-primary">Post</button>
+    </div>
+  </form>
+</div>

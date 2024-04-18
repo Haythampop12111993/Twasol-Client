@@ -1,0 +1,106 @@
+@if (!isLoading) {
+<div style="width: 80%; margin: 100px auto">
+  <div style="display: flex; justify-content: center; align-items: center">
+    <img src="assets\spinner.gif" alt="loading" />
+  </div>
+</div>
+}@else {
+<div>
+  @if(!isUserProfile){
+  <div>
+    <div class="d-flex justify-content-center align-items-center flex-column">
+      <h4 style="padding: 10px; margin-top: 100px">Please create a profile</h4>
+      <button
+        routerLink="createProfile"
+        class="btn btn-primary"
+        style="width: 150px"
+      >
+        Create Profile
+      </button>
+    </div>
+  </div>
+  } @if(isUserProfile){
+  <div style="margin: 100px auto; width: 80%">
+    <div class="home-row">
+      <div style="text-align: center" class="home-column">
+        <img
+          style="
+            border-radius: 50%;
+            box-shadow: 5px 5px 5px 0px rgb(156, 154, 154);
+            width: 75%;
+          "
+          [src]="this.GlobalService.userImage"
+          alt="profile Img"
+        />
+        <p style="margin: 10px 0" class="name toCapitalize">
+          {{ userProfile?.user?.name }}
+        </p>
+        <button (click)="openDialog()" mat-raised-button color="primary">
+          {{
+            this.GlobalService.userImage == " assets/default.png"
+              ? " Upload Profile Image"
+              : "Change Profile Image"
+          }}
+        </button>
+
+        <div class="card flex justify-content-center"></div>
+      </div>
+      <div class="home-column">
+        <app-user-info [userData]="userProfile"></app-user-info>
+        <div class="social"></div>
+      </div>
+    </div>
+    <div class="home-row">
+      <div style="padding: 20px" class="home-column">
+        <div class="home-row justify-content-center align-items-center">
+          <div class="home-column">
+            <h3>Education</h3>
+          </div>
+          <div class="home-column">
+            <a
+              style="
+                width: 30px;
+                height: 30px;
+                background-color: #3e09a1;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+              class="add-button"
+              routerLink="education/addEducation"
+              ><fa-icon style="color: white" [icon]="faPlus"></fa-icon>
+            </a>
+          </div>
+        </div>
+        <app-education [userData]="userProfile"></app-education>
+      </div>
+      <div style="padding: 20px" class="home-column">
+        <div class="home-row justify-content-center align-items-center">
+          <div class="home-column">
+            <h3>Experience</h3>
+          </div>
+          <div class="home-column">
+            <a
+              style="
+                width: 30px;
+                height: 30px;
+                background-color: #3e09a1;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+              class="add-button"
+              routerLink="experience/addExperience"
+              ><fa-icon style="color: white" [icon]="faPlus"></fa-icon>
+            </a>
+          </div>
+        </div>
+        <app-experience [userData]="userProfile"></app-experience>
+      </div>
+    </div>
+  </div>
+  }
+</div>
+}

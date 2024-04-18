@@ -1,0 +1,66 @@
+@if (!isLoading) {
+<div style="width: 80%; margin: 100px auto">
+  <div class="d-flex justify-content-center align-items-center">
+    <img src="assets/spinner.gif" alt="loading" />
+  </div>
+</div>
+}@else { @if (!isUserProfile) {
+<div class="home">
+  <div class="post-card center">
+    <h2 class="text-center">Please create a profile</h2>
+    <button
+      style="width: 120px !important; padding: 10px 5px; font-size: medium"
+      routerLink="/main/profile/createProfile"
+      class="btn btn-primary"
+    >
+      Create Profile
+    </button>
+  </div>
+</div>
+}@else {
+<div class="home">
+  <div class="post-card center">
+    <div style="margin-bottom: 15px">
+      <h4>UpDate your profile information</h4>
+    </div>
+    <div style="margin-bottom: 15px">
+      <button
+        style="padding: 10px 5px; font-size: medium"
+        routerLink="/main/profile/editProfile"
+        class="btn btn-primary"
+      >
+        Edit Profile
+      </button>
+    </div>
+  </div>
+  <div class="post-card center">
+    <div style="margin-bottom: 15px">
+      <h4>Delete your profile</h4>
+    </div>
+    <div style="margin-bottom: 15px">
+      <!-- <button
+        style="
+          padding: 10px 5px;
+          font-size: medium;
+          width: 120px;
+          background-color: #dc143c;
+        "
+        class="btn btn-primary"
+        (click)="handelDeleteProfile()"
+      >
+        Delete Profile
+      </button> -->
+      <button
+        style="padding: 10px 5px; font-size: medium; width: 150px"
+        class="btn btn-primary"
+        mat-raised-button
+        (click)="openDialog()"
+      >
+        Delete Profile
+      </button>
+    </div>
+  </div>
+  <!--
+  <button class="btn">Delete Profile</button> -->
+</div>
+} }

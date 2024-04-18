@@ -1,0 +1,47 @@
+<div>
+  @if( userData?.education?.length == 0 ){
+  <div
+    style="margin-top: 10px"
+    class="d-flex justify-content-center align-items-center"
+  >
+    <h4>No Education</h4>
+  </div>
+
+  } @else { @for (item of userData?.education; track $index) {
+  <div
+    style="
+      margin-top: 15px;
+      padding: 10px;
+      box-shadow: 5px 5px 5px 0px rgb(156, 154, 154);
+      border-radius: 10px;
+      background-color: #f6f6f6;
+      color: black;
+      transition: 0.3s;
+    "
+    class="d-flex justify-content-between"
+  >
+    <div class="d-flex justify-content-center align-items-center">
+      <fa-icon [icon]="faGraduationCap"></fa-icon>
+      <p style="margin-left: 10px">
+        {{ item.current ? "Studies" : "Studied" }}
+        <b> {{ item.degree }}</b> of <b>{{ item.fieldOfStudy }}</b> at
+        <b>{{ item.school }}</b>
+      </p>
+      <small style="margin-left: 25px">
+        from {{ item.from | date }} - to
+        {{ item.current ? "Present" : (item.to | date) }}
+      </small>
+    </div>
+    @if (inProfile) {
+    <fa-icon
+      style="cursor: pointer"
+      [ngStyle]="{ color: color }"
+      (mouseover)="handelMouseOver($event)"
+      (mouseout)="handelMouseOut($event)"
+      [icon]="faTrash"
+      (click)="handelDeleteEducation(item._id, $index)"
+    ></fa-icon>
+    }
+  </div>
+  } }
+</div>

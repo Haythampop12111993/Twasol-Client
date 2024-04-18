@@ -1,0 +1,33 @@
+@if (!isLoading) {
+<div style="width: 80%; margin: 100px auto">
+  <div style="display: flex; justify-content: center; align-items: center">
+    <img src="assets\spinner.gif" alt="loading" />
+  </div>
+</div>
+}@else {
+<div style="width: 80%; margin: 0 auto">
+  <div class="home">
+    <div class="row">
+      @for (profile of allUsersProfiles; track $index) {
+      <div class="column">
+        <div
+          style="cursor: pointer; text-align: center"
+          routerLink="/main/usersProfiles/userProfile/{{ profile._id }}"
+          class="card"
+        >
+          @if (profile.image) {
+          <img [src]="profile.image" alt="profile" />
+          }@else {
+          <img src="assets/default.png" alt="profile" />
+          }
+          <div class="card-container">
+            <p class="name toCapitalize">{{ profile.user.name }}</p>
+            <p class="name toCapitalize">{{ profile.status }}</p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+}

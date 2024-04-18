@@ -1,0 +1,31 @@
+<div class="post-card">
+  <p
+    style="
+      border-bottom: 2px solid rgb(151, 145, 145);
+      padding-bottom: 0.5rem;
+      margin-bottom: 20px;
+    "
+    class="form-title center"
+  >
+    <b> Create Post </b>
+  </p>
+  <form #fromPost="ngForm" (ngSubmit)="onSubmit(fromPost)">
+    <div class="form-group">
+      <textarea
+        placeholder="What's on your mind?"
+        name="post"
+        [(ngModel)]="post"
+        required
+        #postText="ngModel"
+      ></textarea>
+    </div>
+    @if (postText.errors?.["required"] && fromPost.submitted) {
+    <div>
+      <p class="alert alert-danger center">Post is Required</p>
+    </div>
+    }
+    <div class="form-group">
+      <button class="btn btn-primary">Post</button>
+    </div>
+  </form>
+</div>

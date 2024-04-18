@@ -1,0 +1,24 @@
+<!-- <p>{{ userData | json }}</p> -->
+<div>
+  <div class="container">
+    <p class="name toUpperCase">{{ userData.bio }}</p>
+  </div>
+  <div class="container">
+    <p>
+      Lives in :<b> {{ userData.location }}</b>
+    </p>
+  </div>
+  <div class="container">
+    From :<b> {{ userData.country }}</b>
+  </div>
+  <div class="container">
+    Skills : @for (skill of userData.skills; track $index) {
+    <p class="toCapitalize">
+      <b> <span>&#10003;</span> {{ skill }}</b>
+    </p>
+    }
+    <!-- @for(skill of userData.skills , let i = index){
+    <p class="toCapitalize">{{ userData.skills }}</p>
+    } -->
+  </div>
+</div>

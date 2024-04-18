@@ -1,0 +1,73 @@
+<div class="main register">
+  <p class="form-title center">Sign Up</p>
+  <form class="form1" [formGroup]="registerForm" (submit)="handelRegister()">
+    <input
+      class="input-test"
+      type="text"
+      name="name"
+      placeholder="Name"
+      formControlName="name"
+    />
+    <input
+      class="input-test"
+      type="text"
+      name="email"
+      placeholder="Email"
+      formControlName="email"
+    />
+    @if(formControls.email.errors?.['pattern'] && isSubmitted ){
+    <div
+      style="margin-right: 5px"
+      class="d-flex justify-content-center align-items-center"
+    >
+      <p class="alert alert-danger center">Invalid Email</p>
+    </div>
+    }
+    <input
+      class="input-test"
+      type="password"
+      name="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+    @if(formControls.password.errors?.['pattern']){
+    <div style="margin-right: 5px" class="d-flex justify-content-center">
+      <span class="alert alert-info">
+        Password must contain at least one uppercase letter, one lowercase
+        letter, and one number and one special character and length of 8.
+      </span>
+    </div>
+    }
+    <input
+      class="input-test"
+      type="password"
+      name="confirmPassword"
+      placeholder="ConfirmPassword"
+      formControlName="confirmPassword"
+    />
+    @if(formControls.confirmPassword.dirty && isSubmitted){ @if(
+    formControls.password.value != formControls.confirmPassword.value ){
+    <div style="margin-right: 5px" class="d-flex justify-content-center">
+      <p class="alert alert-danger center">Password not matched</p>
+    </div>
+    } }
+    <input
+      class="input-test"
+      type="text"
+      name="phone"
+      placeholder="Phone"
+      formControlName="phone"
+    />
+    <select class="input-test" name="gender" formControlName="gender">
+      <option disabled value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    <div class="d-flex justify-content-center align-items-center">
+      <button class="btn btn-primary">Submit</button>
+    </div>
+    <p class="forgot center">
+      Already have an account? <a routerLink="/login">Login</a>
+    </p>
+  </form>
+</div>

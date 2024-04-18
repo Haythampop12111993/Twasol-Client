@@ -1,0 +1,217 @@
+<div class="main profileWidth" style="width: 600px; text-align: center">
+  <p class="form-title">Create Profile</p>
+  <form
+    class="form1"
+    [formGroup]="formData"
+    (submit)="hundelSubmit(skills.value)"
+  >
+    <div class="form-group">
+      <select style="margin-left: 0" name="status" formControlName="status">
+        <option disabled selected value="">* Select Professional Status</option>
+        <option value="Developer">Developer</option>
+        <option value="Manager">Manager</option>
+        <option value="Journalist">Journalist</option>
+        <option value="Doctor">Doctor</option>
+        <option value="Engineer">Engineer</option>
+        <option value="Student or Learning">Student or Learning</option>
+        <option value="Other">Other</option>
+      </select>
+      @if(formControls.status.touched &&formControls.status.invalid){
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="alert alert-danger center">Please Select Your Status!</div>
+      </div>
+      }
+      <!-- <div class="form-group">
+        <input
+          style="margin-left: 0"
+          type="file"
+          placeholder="Upload Image"
+          (change)="onFileChange($event)"
+        />
+      </div> -->
+      <div class="form-group">
+        <input
+          style="margin-left: 0"
+          type="text"
+          placeholder="* Company"
+          formControlName="company"
+        />
+      </div>
+      @if(formControls.company.touched &&formControls.company.invalid){
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="alert alert-danger center">
+          Please Enter Your Company Name!
+        </div>
+      </div>
+      }
+      <div class="form-group">
+        <input
+          style="margin-left: 0"
+          type="text"
+          placeholder="Website"
+          formControlName="website"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          style="margin-left: 0"
+          type="text"
+          placeholder="* Location"
+          formControlName="location"
+        />
+      </div>
+      @if(formControls.location.touched &&formControls.location.invalid){
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="alert alert-danger center">Please Enter Your Location!</div>
+      </div>
+      }
+      <div class="form-group">
+        <input
+          style="margin-left: 0"
+          type="text"
+          placeholder="* Country"
+          formControlName="country"
+        />
+      </div>
+      @if(formControls.country.touched &&formControls.country.invalid){
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="alert alert-danger center">Please Enter Your Country!</div>
+      </div>
+      }
+    </div>
+    <div class="form-group">
+      <form formArrayName="skills">
+        <input
+          style="margin-left: 0"
+          type="text"
+          placeholder="* Skills"
+          #skills
+          (focus)="hundelFocus()"
+        />
+      </form>
+      @if(isImtySkill){
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="alert alert-danger center">Please Enter Your Skill!</div>
+      </div>
+
+      }
+      <!-- @if(userSkills.length > 0){
+      <div>
+        <p style="margin-bottom: 25px">Your Skills:</p>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="alert alert-success">{{ userSkills.join(",") }}</div>
+        </div>
+      </div>
+
+      } -->
+      @if(isSkillsFocus ){
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="alert alert-info center">
+          Please Use "," Between Skills! (like that html,css,js,....)
+        </div>
+      </div>
+      } @if(isSubmit && !isWithComa){
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="alert alert-warning center">
+          Please Use "," Between Skills!
+        </div>
+      </div>
+
+      }
+    </div>
+    <div class="form-group">
+      <textarea
+        style="margin-left: 0"
+        placeholder="* A short bio of yourself"
+        formControlName="bio"
+      ></textarea>
+    </div>
+    @if(formControls.bio.touched &&formControls.bio.invalid){
+    <div
+      style="margin-top: -8px; margin-bottom: 20px"
+      class="d-flex justify-content-center align-items-center"
+    >
+      <div class="alert alert-danger center">Please Enter Your Bio!</div>
+    </div>
+
+    }
+    <div [hidden]="!showMedia" class="form-group">
+      <h4 style="margin: 10px 0">* Social Network Links</h4>
+      <form [formGroup]="formData.controls.social">
+        <input
+          style="margin-left: 0"
+          type="text"
+          name="facebook"
+          formControlName="facebook"
+          placeholder="Facebook"
+        />
+        <input
+          style="margin-left: 0"
+          type="text"
+          name=""
+          formControlName="twitter"
+          placeholder="Twitter"
+        />
+        <input
+          style="margin-left: 0"
+          type="text"
+          name=""
+          formControlName="linkedin"
+          placeholder="Linkedin"
+        />
+        <input
+          style="margin-left: 0"
+          type="text"
+          name=""
+          formControlName="youtube"
+          placeholder="YouTube"
+        />
+        <input
+          style="margin-left: 0"
+          type="text"
+          name=""
+          formControlName="instagram"
+          placeholder="Instagram"
+        />
+        <input
+          style="margin-left: 0"
+          formControlName="github"
+          type="text"
+          name=""
+          placeholder="Github"
+        />
+      </form>
+    </div>
+    <div style="width: 90%" class="d-flex justify-content-end">
+      <button
+        [hidden]="showMedia"
+        style="font-size: 14px"
+        class="btn btn-light"
+        (click)="showMedia = !showMedia"
+        type="button"
+      >
+        Add Media
+      </button>
+      <button
+        type="button"
+        [hidden]="!showMedia"
+        style="font-size: 14px"
+        class="btn btn-light"
+        (click)="showMedia = !showMedia"
+      >
+        Hide Media
+      </button>
+    </div>
+    <button
+      style="margin-bottom: 20px"
+      [disabled]="!formData.valid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+<div style="margin-top: 150px; text-align: center">
+  {{ img.name }}
+</div>

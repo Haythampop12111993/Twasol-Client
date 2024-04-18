@@ -1,0 +1,54 @@
+<nav style="padding: 15px" class="navbar bg-navbar">
+  <h1 style="margin-bottom: 0">
+    <a class="logo-navbar" routerLink="/"> TwaSol </a>
+  </h1>
+  @if(global.islogin){
+  <div style="margin: 0 auto 0 5%">
+    <a routerLink="/main/profile" routerLinkActive="active" class="">Profile</a>
+    <a routerLink="/main/usersProfiles" routerLinkActive="active" class=""
+      >UsersProfiles</a
+    >
+    <a routerLink="/main/userPosts" routerLinkActive="active" class=""
+      >User Posts</a
+    >
+    <a routerLink="/main/settings" routerLinkActive="active" class=""
+      >Settings</a
+    >
+  </div>
+  }
+  <div>
+    <ul>
+      @if (!global.islogin) {
+      <li>
+        <a routerLink="/login">Login</a>
+      </li>
+      } @if (global.islogin) {
+      <li
+        style="
+          display: flex;
+          align-items: center;
+          align-items: center;
+          margin-right: 25px;
+          gap: 5px;
+        "
+      >
+        <p
+          style="color: white; margin-right: 10px; margin-bottom: 0"
+          class="toCapitalize"
+        >
+          Welcome {{ global.userName }}
+        </p>
+        <img
+          style="width: 30px; height: 30px; border-radius: 50%"
+          src="{{ global.userImage }}"
+          alt=""
+        />
+      </li>
+      } @if (global.islogin) {
+      <li style="display: flex; align-items: center">
+        <a class="carsol" (click)="logout()">logout</a>
+      </li>
+      }
+    </ul>
+  </div>
+</nav>

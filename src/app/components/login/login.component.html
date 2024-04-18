@@ -1,0 +1,47 @@
+<div class="main login">
+  <p class="form-title center">Login</p>
+  <form class="form1" #loginForm="ngForm" (submit)="handelLogin(loginForm)">
+    <input
+      class=""
+      type="text"
+      name="email"
+      placeholder="Email"
+      [(ngModel)]="formData.email"
+      #email="ngModel"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      required
+    />
+    @if (email.dirty && loginForm.submitted) { @if(email.errors?.["required"]){
+    <div class="d-flex justify-content-center">
+      <p class="alert alert-danger center">Email is Required</p>
+    </div>
+    } @if(email.errors?.["pattern"]){
+    <div class="d-flex justify-content-center">
+      <p class="alert alert-danger center">Invalid Email</p>
+    </div>
+    } }
+    <input
+      class="input-test"
+      type="password"
+      name="password"
+      placeholder="Password"
+      [(ngModel)]="formData.password"
+      #password="ngModel"
+      required
+    />
+    @if(password.dirty && loginForm.submitted){
+    @if(password.errors?.["required"]){
+    <div class="d-flex justify-content-center">
+      <p class="alert alert-danger center">Password is Required</p>
+    </div>
+    } }
+    <div class="d-flex justify-content-center align-items-center">
+      <button [disabled]="!loginForm.valid" class="btn btn-primary">
+        Login
+      </button>
+    </div>
+    <p class="forgot center">
+      Don't have an account? <a routerLink="/register">Register</a>
+    </p>
+  </form>
+</div>

@@ -1,0 +1,124 @@
+<div class="main" style="text-align: center; width: 700px; padding: 15px">
+  <p class="form-title">Add Education</p>
+  <small>* = required field</small>
+  <form [formGroup]="educationFrom" class="form1" (submit)="addEducation()">
+    <div>
+      <input
+        style="margin-left: 0"
+        type="text"
+        name="school"
+        placeholder="* School"
+        formControlName="school"
+      />
+    </div>
+    @if( educationControls?.school?.['errors']?.['required']&& isSubmitted){
+    <div>
+      <div
+        class="d-flex justify-content-center align-items-center error-message"
+      >
+        <h4 class="alert alert-danger">School is required</h4>
+      </div>
+    </div>
+    }
+
+    <div>
+      <input
+        style="margin-left: 0"
+        type="text"
+        name="degree"
+        placeholder="* Degree"
+        formControlName="degree"
+      />
+    </div>
+    @if(educationControls?.degree?.['errors']?.['required']&& isSubmitted){
+    <div>
+      <div
+        class="d-flex justify-content-center align-items-center error-message"
+      >
+        <h4 class="alert alert-danger">School is required</h4>
+      </div>
+    </div>
+    }
+    <div>
+      <input
+        style="margin-left: 0"
+        type="text"
+        name="fieldOfStudy"
+        placeholder="* Field of Study"
+        formControlName="fieldOfStudy"
+      />
+    </div>
+    @if(educationControls?.fieldOfStudy?.['errors']?.['required']&&
+    isSubmitted){
+    <div>
+      <div
+        class="d-flex justify-content-center align-items-center error-message"
+      >
+        <h4 class="alert alert-danger">FiledOfStudy is required</h4>
+      </div>
+    </div>
+    }
+    <div>
+      <h3 style="text-align: left; margin-left: 85px; margin-bottom: 5px">
+        From Date
+      </h3>
+      <input
+        style="margin-left: 0"
+        type="date"
+        name="from"
+        formControlName="from"
+      />
+    </div>
+    @if(educationControls?.from?.['errors']?.['required']&& isSubmitted){
+    <div>
+      <div
+        class="d-flex justify-content-center align-items-center error-message"
+      >
+        <h4 class="alert alert-danger">From Date is required</h4>
+      </div>
+    </div>
+    }
+    <div
+      style="
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 10px;
+        margin: 20px 0 20px 85px;
+      "
+    >
+      <input type="checkbox" name="current" formControlName="current" />
+      <h4>Current ( Until now )</h4>
+    </div>
+    <div [hidden]="educationFrom.get('current')?.value">
+      <h3 style="text-align: left; margin-left: 85px; margin-bottom: 5px">
+        To Date
+      </h3>
+      <input
+        [readOnly]="educationFrom.get('current')?.value"
+        style="margin-left: 0"
+        type="date"
+        name="to"
+        formControlName="to"
+      />
+    </div>
+    @if(!educationFrom.get('to')?.value && !educationFrom.get('current')?.value
+    && isSubmitted){
+    <div style="display: flex; justify-content: center">
+      <div
+        style="display: flex; justify-content: center"
+        class="alert alert-danger"
+      >
+        <h3>To Date is required</h3>
+      </div>
+    </div>
+    }
+
+    <div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button routerLink="/main/profile" type="button" class="btn btn-light">
+        Go Back
+      </button>
+    </div>
+  </form>
+</div>

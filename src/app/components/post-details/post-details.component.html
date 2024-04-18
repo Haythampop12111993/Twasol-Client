@@ -1,0 +1,26 @@
+@if (!isLoading) {
+<div style="width: 80%; margin: 100px auto">
+  <div class="d-flex justify-content-center align-items-center">
+    <img src="assets/spinner.gif" alt="loading" />
+  </div>
+</div>
+
+}@else {
+<div class="home">
+  <div>
+    <app-post-item [post]="postData"></app-post-item>
+    <app-post-comment [post_id]="postData._id"></app-post-comment>
+  </div>
+  @if (!GlobalService.postData.comments.length ) {
+  <div class="post-card">
+    <h4 class="center">The Post Has No Comments Yet</h4>
+  </div>
+  }@else{ @for (comment of GlobalService.postData.comments; track $index) {
+  <app-comment-item
+    [comment]="comment"
+    [post_id]="postData._id"
+    [userId]="userId"
+  ></app-comment-item>
+  } }
+</div>
+}

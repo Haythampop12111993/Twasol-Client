@@ -1,0 +1,45 @@
+<div class="post-card">
+  <div class="row">
+    <div class="column">
+      <img class="profile" [src]="post.userPostImg" alt="profile Img" />
+      <h4>{{ post?.name }}</h4>
+    </div>
+    <div style="width: 75%; text-align: left; margin-top: 10px" class="column">
+      <h4>{{ post.text }}</h4>
+      <small style="color: gray"> Posted at: {{ post.createdAt | date }}</small>
+      @if (inMain) {
+      <div>
+        <button (click)="handelLikePost(post._id)" class="btn btn-light">
+          <fa-icon
+            [ngStyle]="{ color: LikeColor }"
+            [icon]="faThumbsUp"
+          ></fa-icon>
+          {{ post.likes.length > 0 ? post.likes.length : "" }}
+        </button>
+        <button class="btn btn-light">
+          <fa-icon
+            (click)="handelUnLikePost(post._id)"
+            [ngStyle]="{ color: unLikeColor }"
+            [icon]="faThumbsDown"
+          ></fa-icon>
+          {{ post.unLikes.length > 0 ? post.unLikes.length : "" }}
+        </button>
+        <button
+          style="width: 120px; font-size: medium"
+          class="btn btn-primary"
+          routerLink="/main/postDetails/{{ post._id }}"
+        >
+          Comment
+          {{ post.comments.length ? post.comments.length : "" }}
+        </button>
+        @if (userId == post.user) {
+        <button (click)="handelDeletePost(post._id)" class="btn btn-light">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+        }
+      </div>
+
+      }
+    </div>
+  </div>
+</div>

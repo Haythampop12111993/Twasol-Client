@@ -1,0 +1,32 @@
+<div style="margin-left: 0" class="home">
+  <h4 style="text-align: center; margin: 30px auto 0 auto" class="title">
+    Your Posts
+  </h4>
+  @if (!isLoading) {
+  <div style="width: 80%; margin: 100px auto">
+    <div class="d-flex justify-content-center align-items-center">
+      <img src="assets/spinner.gif" alt="loading" />
+    </div>
+  </div>
+  } @else { @if(isUserHavePosts){
+  <div class="home">
+    @for (post of posts; track $index) {
+    <app-post-item [post]="post"></app-post-item>
+    }
+  </div>
+  }@else {
+  <div
+    style="
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    "
+  >
+    <h4 style="text-align: center">No Posts</h4>
+    <button routerLink="/main" style="margin-top: 30px" class="btn btn-primary">
+      Add Post
+    </button>
+  </div>
+  } }
+</div>

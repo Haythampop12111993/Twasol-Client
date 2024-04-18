@@ -1,0 +1,51 @@
+@if (!isLoading) {
+<div style="width: 80%; margin: 100px auto">
+  <div style="display: flex; justify-content: center; align-items: center">
+    <img src="assets\spinner.gif" alt="loading" />
+  </div>
+</div>
+}@else {
+<div style="margin: 100px auto; width: 80%">
+  <div class="home-row">
+    <div style="text-align: center" class="home-column">
+      <img
+        style="
+          border-radius: 50%;
+          box-shadow: 5px 5px 5px 0px rgb(156, 154, 154);
+          max-height: 320px;
+          max-width: 320px;
+          margin-bottom: 20px;
+        "
+        [src]="img"
+        alt="profile Img"
+      />
+      <p class="name toCapitalize">{{ userProfile?.user?.name }}</p>
+    </div>
+
+    <div class="home-column">
+      <app-user-info [userData]="userProfile"></app-user-info>
+      <div class="social"></div>
+    </div>
+  </div>
+  <div class="home-row">
+    <div style="padding: 20px" class="home-column">
+      <div class="home-row justify-content-center align-items-center">
+        <div class="home-column">
+          <h3>Education</h3>
+        </div>
+        <div class="home-column"></div>
+      </div>
+      <app-education [userData]="userProfile"></app-education>
+    </div>
+    <div style="padding: 20px" class="home-column">
+      <div class="home-row justify-content-center align-items-center">
+        <div class="home-column">
+          <h3>Experience</h3>
+        </div>
+      </div>
+      <app-experience [userData]="userProfile"></app-experience>
+    </div>
+  </div>
+</div>
+
+}

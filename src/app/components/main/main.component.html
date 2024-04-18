@@ -1,0 +1,22 @@
+@if (!isLoading) {
+<div style="width: 80%; margin: 100px auto">
+  <div class="d-flex justify-content-center align-items-center">
+    <img src="assets/spinner.gif" alt="loading" />
+  </div>
+</div>
+}@else {
+<div class="home">
+  <div>
+    <app-post-form (isPostAdded)="addNewItem()"></app-post-form>
+    <div>
+      @for (post of this.global.allPosts; track $index) {
+      <app-post-item
+        (likePost)="handelLikePost($event)"
+        (unLikePost)="handelUnLikePost($event)"
+        [post]="post"
+      ></app-post-item>
+      }
+    </div>
+  </div>
+</div>
+}
