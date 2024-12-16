@@ -4,15 +4,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Client 
 <div>
-  <img src="https://github.com/user-attachments/assets/ba07ac01-103e-4670-bba8-6e48869782db" width="300">
-  <img src="https://github.com/user-attachments/assets/185fb7cc-51c8-43a2-bafc-b44c05975468"width="300">
-  <img src="https://github.com/user-attachments/assets/6cda80ce-0f23-498d-814c-04e92b3707bb"width="300">
-  <img src="https://github.com/user-attachments/assets/afd5e30f-a09f-4718-8f47-d00fa894003a"width="300">
-  <img src="https://github.com/user-attachments/assets/8ac7caa8-187d-4fe9-83bc-58d50e184025"width="300">
-  <img src="https://github.com/user-attachments/assets/d79843be-d5d0-4949-a512-6ed7bfab234a"width="300">
-  <img src="https://github.com/user-attachments/assets/6b43c720-0a66-4086-ad6b-07bc69ba4a1e"width="300">
-  <img src="https://github.com/user-attachments/assets/b6ceee21-578d-41bc-ae16-90abc96a9bf8"width="300">
-  <img src="https://github.com/user-attachments/assets/9ed85ec7-8182-410c-a843-af35c21882a6"width="300">
+  <img src="https://github.com/user-attachments/assets/ba07ac01-103e-4670-bba8-6e48869782db" width="250">
+  <img src="https://github.com/user-attachments/assets/185fb7cc-51c8-43a2-bafc-b44c05975468"width="250">
+  <img src="https://github.com/user-attachments/assets/6cda80ce-0f23-498d-814c-04e92b3707bb"width="250">
+  <img src="https://github.com/user-attachments/assets/afd5e30f-a09f-4718-8f47-d00fa894003a"width="250">
+  <img src="https://github.com/user-attachments/assets/8ac7caa8-187d-4fe9-83bc-58d50e184025"width="250">
+  <img src="https://github.com/user-attachments/assets/d79843be-d5d0-4949-a512-6ed7bfab234a"width="250">
+  <img src="https://github.com/user-attachments/assets/6b43c720-0a66-4086-ad6b-07bc69ba4a1e"width="250">
+  <img src="https://github.com/user-attachments/assets/b6ceee21-578d-41bc-ae16-90abc96a9bf8"width="250">
+  <img src="https://github.com/user-attachments/assets/9ed85ec7-8182-410c-a843-af35c21882a6"width="250">
 </div>
 
 ## Server 
